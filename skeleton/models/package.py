@@ -1,3 +1,6 @@
+from skeleton.models.constants.package_status import PackageStatus
+
+
 class Package:
 
     id = 1
@@ -8,9 +11,9 @@ class Package:
         self.end_location = end_location
         self.weight = weight
         self.contact_info = contact_info
-        self.package_id = Package.id
-        self.status = "Not Assigned"
+        self.status = PackageStatus.PENDING
         self.assigned_route = None
+        self.package_id = Package.id
         Package.id += 1
 
 

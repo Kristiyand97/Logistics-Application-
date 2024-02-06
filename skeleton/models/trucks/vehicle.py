@@ -1,7 +1,8 @@
 from skeleton.models.constants.vehicle_status import VehicleStatus
 
 
-class Truck:
+class Vehicle:
+
     def __init__(self, name: str, capacity: int, max_range: int):
         self.name = name
         self.capacity = capacity
