@@ -1,4 +1,4 @@
-from skeleton.models.trucks.truck import Truck
+from skeleton.models.trucks.vehicle import Truck
 
 
 class Scania(Truck):
