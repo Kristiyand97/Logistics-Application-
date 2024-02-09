@@ -67,7 +67,6 @@ class Logistics:
             if r.route_id == route.route_id:
                 if package.start_location == r.start_location and package.end_location == r.end_location:
                     package.assign_route(route)
-                    package.status = PackageStatus.IN_TRANSIT
                     package.assigned_route = route.route_id
                     route.route_assigned = True
                     return f"Package was successfully added to route with ID: {route.route_id}"
