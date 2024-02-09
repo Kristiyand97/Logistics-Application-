@@ -1,6 +1,7 @@
 from datetime import datetime
 
 from skeleton.models.constants.package_status import PackageStatus
+from skeleton.models.constants.vehicle_status import VehicleStatus
 from skeleton.models.package import Package
 from skeleton.models.delivery_route import DeliveryRoute
 from skeleton.models.vehicle import Vehicle
@@ -22,12 +23,16 @@ class Logistics:
             "PER": {"SYD": 4016, "MEL": 3509, "ADL": 2785, "ASP": 2481, "BRI": 4311, "DAR": 4025}
         }
 
-        for truck_id in range(1001, 1011):
-            self.unused_vehicles.append(Vehicle("Scania", 4200, 8000))
-        for truck_id in range(1011, 2026):
-            self.unused_vehicles.append(Vehicle("Man", 37000, 10000))
-        for truck_id in range(1026, 1041):
-            self.unused_vehicles.append(Vehicle("Actros", 26000, 13000))
+        truck_id = 1001
+        for _ in range(10):
+            self.unused_vehicles.append(Vehicle(truck_id, "Scania", 4200, 8000))
+            truck_id += 1
+        for _ in range(15):
+            self.unused_vehicles.append(Vehicle(truck_id, "Man", 37000, 10000))
+            truck_id += 1
+        for _ in range(15):
+            self.unused_vehicles.append(Vehicle(truck_id, "Actros", 26000, 13000))
+            truck_id += 1
 
     def create_package(self, start_location, end_location, weight, customer_contact):
         new_package = Package(start_location, end_location, weight, customer_contact)
@@ -38,7 +43,7 @@ class Logistics:
         for route in self.routes:
             if idx == route.idx:
                 raise ValueError(f"Delivery route with ID: {idx} already exists")
-        new_route = DeliveryRoute(idx)
+        new_route = DeliveryRoute(idx, self)
         self.routes.append(new_route)
         return new_route
 
@@ -55,7 +60,7 @@ class Logistics:
         else:
             raise ValueError(f"No route found with ID: {route_id}")
 
-    def add_location_to_route(self, route_id, name, arrival_time: datetime):
+    def add_location_to_route(self, route_id: int, name: str, arrival_time: datetime):
         route = self.get_route_by_id(route_id)
         if route:
             route.add_location(name, arrival_time)
@@ -71,6 +76,31 @@ class Logistics:
                     route.route_assigned = True
                     return f"Package was successfully added to route with ID: {route.route_id}"
 
+    def calculate_distance(self, route):
+        total_distance = 0
+        for i in range(len(route.locations) - 1):
+            start = route.locations[i]["name"]
+            end = route.locations[i + 1]["name"]
+            total_distance += self.distances[start][end]
+        return total_distance
+
+    def assign_truck_to_route(self, route):
+        total_weight = sum(package.weight for package in self.packages if package.assigned_route == route.route_id)
+        route_distance = self.calculate_distance(route)
+
+        for truck in self.unused_vehicles:
+            if truck.status == VehicleStatus.AVAILABLE and truck.capacity >= total_weight and truck.max_range >= route_distance:
+                route.truck = truck.truck_id
+                truck.status = VehicleStatus.UNAVAILABLE
+                self.unused_vehicles.remove(truck)
+                self.used_vehicles.append(truck)
+                return f"Truck {truck.name} with ID:{truck.truck_id} was assigned to route {route.route_id}"
+        return "No available truck meets the route's requirements"
+
+
+
+
+
 
 logistics = Logistics()
 route_one = logistics.create_route(100)
@@ -79,7 +109,5 @@ logistics.add_start_location_to_route(100, "SYD", datetime(2024, 1, 3, 15, 30))
 logistics.add_location_to_route(100, "MEL", datetime(2024, 1, 5, 12, 35))
 
 package_one = logistics.create_package("SYD", "MEL", 45, "Kristiyan")
-
 print(logistics.assign_package_to_route(package_one, route_one))
-
-
+print(logistics.assign_truck_to_route(route_one))

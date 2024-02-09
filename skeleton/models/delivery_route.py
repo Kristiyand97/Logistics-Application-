@@ -1,8 +1,11 @@
 from datetime import datetime
 
+from skeleton.core.logistics import Logistics
+
 
 class DeliveryRoute:
-    def __init__(self, route_id):
+    def __init__(self, route_id, logistics: Logistics):
+        self.logistics = logistics
         self.route_id = route_id
         self.locations = []
         self.route_assigned = False
@@ -26,6 +29,14 @@ class DeliveryRoute:
         self.locations.append({"name": name, "expected_arrival_time": expected_arrival_time})
         self.end_location = name
 
+    def calculate_arrival_times(self, route):
+        average_speed = 87
+        if not self.locations or len(self.locations) < 2:
+            raise ValueError("Not enough locations to calculate arrival time")
+        for i in range(1, len(self.locations)):
+            distance = self.logistics.calculate_distance(route)
+            # NOT FINISHED
+
     def display_route(self):
         route_info = []
         for i, location in enumerate(self.locations):
@@ -35,6 +46,3 @@ class DeliveryRoute:
                 route_info.append(
                     f"Location {i}: {location['name']}, Expected Arrival Time: {location['expected_arrival_time']}")
         return "\n".join(route_info)
-
-
-

@@ -1,11 +1,11 @@
+from skeleton.models.constants.vehicle_status import VehicleStatus
+
+
 class Vehicle:
 
-    id = 1001
-
-    def __init__(self, name, capacity, max_range):
+    def __init__(self, truck_id: int, name: str, capacity: int, max_range: int):
         self.name = name
         self.capacity = capacity
         self.max_range = max_range
-        self.status = "Available"
-        self.vehicle_id = Vehicle.id
-        Vehicle.id += 1
+        self.status = VehicleStatus.AVAILABLE
+        self.truck_id = truck_id
