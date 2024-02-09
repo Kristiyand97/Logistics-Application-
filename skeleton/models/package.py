@@ -16,6 +16,11 @@ class Package:
         self.package_id = Package.id
         Package.id += 1
 
+    def assign_route(self, route):
+        self.assigned_route = route
+        return "A delivery route was assigned to the package"
+
+
 
 
 

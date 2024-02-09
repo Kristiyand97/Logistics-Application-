@@ -1,4 +1,4 @@
-from skeleton.core.application_data import ApplicationData
+from skeleton.core.logistics import ApplicationData
 
 
 class BaseCommand():
