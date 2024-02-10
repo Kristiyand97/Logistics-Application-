@@ -1,4 +1,4 @@
-from skeleton.models.constants.package_status import PackageStatus
+from skeleton.models.constants.constant import PackageStatus
 
 
 class Package:
@@ -19,9 +19,3 @@ class Package:
     def assign_route(self, route):
         self.assigned_route = route
         return "A delivery route was assigned to the package"
-
-
-
-
-
-
