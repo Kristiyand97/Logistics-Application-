@@ -1,11 +1,8 @@
 from datetime import datetime
 
-from skeleton.core.logistics import Logistics
-
-
 class DeliveryRoute:
-    def __init__(self, route_id, logistics: Logistics):
-        self.logistics = logistics
+    def __init__(self, route_id):
+        # self.logistics = logistics
         self.route_id = route_id
         self.locations = []
         self.route_assigned = False
@@ -13,28 +10,29 @@ class DeliveryRoute:
         self.start_location = None
         self.end_location = None
 
-    def add_start_location(self, name, departure_time: datetime):
+    def add_start_location(self, name, departure_time: str):
         if self.locations:
             raise ValueError("Start location already set")
-        if not isinstance(departure_time, datetime):
-            raise TypeError("departure_time must be a datetime object")
-        self.locations.append({"name": name, "departure_time": departure_time})
+        if not isinstance(departure_time, str):
+            raise TypeError("departure_time must be a str object")
+        self.locations.append({"name": name, "departure_time": datetime.strptime(departure_time, "%d/%m/%y%H:%M")})
         self.start_location = name
 
-    def add_location(self, name, expected_arrival_time: datetime):
-        if not self.locations:
-            raise ValueError("Start location must be set first")
-        if not isinstance(expected_arrival_time, datetime):
-            raise TypeError("expected_arrival_time must be datetime object")
-        self.locations.append({"name": name, "expected_arrival_time": expected_arrival_time})
+    def add_location(self, name, expected_arrival_time: str):
+        if not self.locations:  raise ValueError("Start location must be set first")
+        if not isinstance(expected_arrival_time, str):
+            raise TypeError("expected_arrival_time must be str object")
+        self.locations.append({"name": name, "expected_arrival_time": datetime.strptime(expected_arrival_time, "%d/%m/%y%H:%M")})
         self.end_location = name
+
 
     def calculate_arrival_times(self, route):
         average_speed = 87
         if not self.locations or len(self.locations) < 2:
             raise ValueError("Not enough locations to calculate arrival time")
         for i in range(1, len(self.locations)):
-            distance = self.logistics.calculate_distance(route)
+            raise NotImplementedError('Possibly implement in logistics')
+            # distance = self.logistics.calculate_distance(route)
             # NOT FINISHED
 
     def display_route(self):

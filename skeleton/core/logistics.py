@@ -34,24 +34,44 @@ class Logistics:
             self.unused_vehicles.append(Vehicle(truck_id, "Actros", 26000, 13000))
             truck_id += 1
 
-    def create_package(self, start_location, end_location, weight, customer_contact):
-        new_package = Package(start_location, end_location, weight, customer_contact)
-        self.packages.append(new_package)
-        return new_package
+    # def create_package(self, start_location, end_location, weight, customer_contact):
+    #     new_package = Package(start_location, end_location, weight, customer_contact)
+    #     self.packages.append(new_package)
+    #     return new_package
 
-    def create_route(self, idx: int):
-        for route in self.routes:
-            if idx == route.idx:
-                raise ValueError(f"Delivery route with ID: {idx} already exists")
-        new_route = DeliveryRoute(idx, self)
-        self.routes.append(new_route)
-        return new_route
+    def add_package(self, package: Package):
+        if any(p for p in self.packages if p.id == package.package_id):
+            return False
+        else:
+            self.packages.append(package)
+            return True
+
+    # def create_route(self, idx: int):
+    #     for route in self.routes:
+    #         if idx == route.idx:
+    #             raise ValueError(f"Delivery route with ID: {idx} already exists")
+    #     new_route = DeliveryRoute(idx, self)
+    #     self.routes.append(new_route)
+    #     return new_route
+
+    def add_route(self, route: DeliveryRoute):
+        if any(r for r in self.routes if r.route_id == route.route_id):
+            return False
+        else:
+            self.routes.append(route)
+            return True
 
     def get_route_by_id(self, route_id: int):
         for route in self.routes:
             if route.route_id == route_id:
                 return route
         raise ValueError(f"No route with id: {route_id} exists")
+
+    def get_package_by_id(self, package_id: int):
+        for package in self.packages:
+            if package.package_id == package_id:
+                return package
+        raise ValueError(f"No package with id: {package_id} exists")
 
     def add_start_location_to_route(self, route_id: int, name: str, departure_time: datetime):
         route = self.get_route_by_id(route_id)
@@ -97,17 +117,35 @@ class Logistics:
                 return f"Truck {truck.name} with ID:{truck.truck_id} was assigned to route {route.route_id}"
         return "No available truck meets the route's requirements"
 
+    def search_route(self, package_id: int):
+        package = self.get_package_by_id(package_id)
+
+        valid_routes = []
+
+        for route in self.routes:
+            start_index = None
+            end_index = None
+            for i in range(len(route.locations)):
+                if route.locations[i]['name'] == package.start_location:
+                    start_index = i
+                if route.locations[i]['name'] == package.end_location:
+                    end_index = i
+            if end_index is not None and start_index is not None and end_index>start_index:
+                valid_routes.append(route.display_route())
 
 
+        if (len(valid_routes) == 0):
+            return "No possible routes."
+        else:
+            return "\n".join(valid_routes)
 
 
-
-logistics = Logistics()
-route_one = logistics.create_route(100)
-
-logistics.add_start_location_to_route(100, "SYD", datetime(2024, 1, 3, 15, 30))
-logistics.add_location_to_route(100, "MEL", datetime(2024, 1, 5, 12, 35))
-
-package_one = logistics.create_package("SYD", "MEL", 45, "Kristiyan")
-print(logistics.assign_package_to_route(package_one, route_one))
-print(logistics.assign_truck_to_route(route_one))
+# logistics = Logistics()
+# route_one = logistics.create_route(100)
+#
+# logistics.add_start_location_to_route(100, "SYD", datetime(2024, 1, 3, 15, 30))
+# logistics.add_location_to_route(100, "MEL", datetime(2024, 1, 5, 12, 35))
+#
+# package_one = logistics.create_package("SYD", "MEL", 45, "Kristiyan")
+# print(logistics.assign_package_to_route(package_one, route_one))
+# print(logistics.assign_truck_to_route(route_one))
