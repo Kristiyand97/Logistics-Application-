@@ -1,6 +1,6 @@
-from skeleton.core.command_factory import CommandFactory
-from skeleton.core.engine import Engine
-from skeleton.core.logistics import Logistics
+from core.command_factory import CommandFactory
+from core.engine import Engine
+from core.logistics import Logistics
 
 logistics = Logistics()
 cmd_factory = CommandFactory(logistics)

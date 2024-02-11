@@ -1,4 +1,4 @@
-from skeleton.models.constants.package_status import PackageStatus
+from models.constants.package_status import PackageStatus
 
 
 class Package:

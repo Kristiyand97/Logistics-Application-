@@ -1,4 +1,4 @@
-from skeleton.models.constants.vehicle_status import VehicleStatus
+from models.constants.vehicle_status import VehicleStatus
 
 
 class Vehicle:

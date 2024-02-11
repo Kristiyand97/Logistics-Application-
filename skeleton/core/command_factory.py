@@ -1,8 +1,8 @@
-from skeleton.commands.create_package import CreatePackageCommand
-from skeleton.commands.create_route import CreateRouteCommand
-from skeleton.commands.search_route import SearchRouteCommand
-from skeleton.core.logistics import Logistics
-from skeleton.core.models_factory import ModelsFactory
+from commands.create_package import CreatePackageCommand
+from commands.create_route import CreateRouteCommand
+from commands.search_route import SearchRouteCommand
+from core.logistics import Logistics
+from core.models_factory import ModelsFactory
 
 
 class CommandFactory:
