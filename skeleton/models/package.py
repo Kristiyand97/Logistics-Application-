@@ -3,7 +3,7 @@ from skeleton.models.constants.constant import PackageStatus
 
 class Package:
 
-    id = 1
+    _id = 1
 
     def __init__(self, start_location: str,
                  end_location: str, weight: float, contact_info):
@@ -13,8 +13,8 @@ class Package:
         self.contact_info = contact_info
         self.status = PackageStatus.PENDING
         self.assigned_route = None
-        self.package_id = Package.id
-        Package.id += 1
+        self.package_id = Package._id
+        Package._id += 1
 
     def assign_route(self, route):
         self.assigned_route = route

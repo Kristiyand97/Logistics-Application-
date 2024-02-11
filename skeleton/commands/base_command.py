@@ -11,8 +11,8 @@ class BaseCommand():
         return tuple(self._params)
 
     @property
-    def logistics(self):
-        return self._logistics
+    def app_data(self):
+        return self._app_data
 
     def execute(self):
         # override in derived classes
