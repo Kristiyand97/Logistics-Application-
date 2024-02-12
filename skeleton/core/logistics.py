@@ -1,8 +1,8 @@
 from datetime import datetime
 
-from skeleton.models.constants.package_status import PackageStatus
-from skeleton.models.constants.vehicle_status import VehicleStatus
-from skeleton.models.package import Package
+from models.constants.constant import PackageStatus
+from models.constants.vehicle_status import VehicleStatus
+from models.package import Package
 from skeleton.models.delivery_route import DeliveryRoute
 from skeleton.models.vehicle import Vehicle
 

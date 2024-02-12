@@ -1,4 +1,4 @@
-from skeleton.models.truck import Truck
+from models.truck import Truck
 
 
 class Trucks:
