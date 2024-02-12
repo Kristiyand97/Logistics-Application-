@@ -22,3 +22,4 @@ class AllRoutes:
         if route is None:
             raise ValueError(f"No route with id: {route_id} exists")
         return route
+

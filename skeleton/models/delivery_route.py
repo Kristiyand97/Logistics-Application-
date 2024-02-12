@@ -21,13 +21,10 @@ class DeliveryRoute:
             print("Insufficient locations in the route.")
             return
 
-        # Format the start time
         current_time = self.start_time
         route_information = f"Route ID: {self.route_id} | {self.locations[0].strip()} ({current_time.strftime('%b %dth %H:%Mh')}) "
 
-        # Iterate over the locations
         for i in range(1, len(self.locations)):
-            # Calculate the arrival time at the next location
             current_time = calculate_time_between_cities(
                 self.locations[i - 1].strip(),
                 self.locations[i].strip(),
@@ -36,3 +33,7 @@ class DeliveryRoute:
 
             # Add the location and its formatted arrival time to the route information
             route_information += f" → {self.locations[i].strip()} ({current_time.strftime('%b %dth %H:%Mh')})"
+
+start_time_str = "2024-02-11 09:00"
+
+route = DeliveryRoute("SYD>")

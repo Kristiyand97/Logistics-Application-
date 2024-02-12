@@ -1,4 +1,4 @@
-from models.truck import Truck
+from skeleton.models.truck import Truck
 
 
 class Trucks:
@@ -58,5 +58,7 @@ class Trucks:
             if truck.max_range >= max_range:
                 self.change_to_used(truck.truck_id)
                 return truck
+
+
 
 
