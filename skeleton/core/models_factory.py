@@ -1,5 +1,5 @@
-from skeleton.models.delivery_route import DeliveryRoute
-from skeleton.models.package import Package
+from models.delivery_route import DeliveryRoute
+from models.package import Package
 
 
 class ModelsFactory:

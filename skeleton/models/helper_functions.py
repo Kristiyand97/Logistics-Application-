@@ -1,6 +1,6 @@
 from datetime import timedelta, datetime
 
-from skeleton.models.constants.constant import DISTANCES, AVERAGE_SPEED, DATE_FORMAT
+from models.constants.constant import DISTANCES, AVERAGE_SPEED, DATE_FORMAT
 
 
 def calculate_time_between_cities(start_city: str, end_city: str, departure_time: datetime):
