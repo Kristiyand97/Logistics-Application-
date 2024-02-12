@@ -1,4 +1,4 @@
-from skeleton.core.logistics import Logistics
+from core.logistics import Logistics
 
 
 class BaseCommand():

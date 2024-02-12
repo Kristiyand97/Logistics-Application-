@@ -1,9 +1,9 @@
-from skeleton.models.constants.constant import PackageStatus
+from models.constants.package_status import PackageStatus
 
 
 class Package:
 
-    _id = 1
+    id = 1
 
     def __init__(self, start_location: str,
                  end_location: str, weight: float, contact_info):
@@ -13,9 +13,15 @@ class Package:
         self.contact_info = contact_info
         self.status = PackageStatus.PENDING
         self.assigned_route = None
-        self.package_id = Package._id
-        Package._id += 1
+        self.package_id = Package.id
+        Package.id += 1
 
     def assign_route(self, route):
         self.assigned_route = route
         return "A delivery route was assigned to the package"
+
+
+
+
+
+

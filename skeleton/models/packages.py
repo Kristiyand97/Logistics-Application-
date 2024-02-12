@@ -1,4 +1,4 @@
-from skeleton.models.package import Package
+from models.package import Package
 
 
 class Packages:
