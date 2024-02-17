@@ -1,13 +1,13 @@
 from datetime import datetime
 
+from skeleton.models.truck import Truck
+
 
 class DeliveryRoute:
     def __init__(self, route_id):
-        # self.logistics = logistics
         self.route_id = route_id
         self.locations = []
         self.route_assigned = False
-        self.truck = None
         self.start_location = None
         self.end_location = None
         self.start_time = None
@@ -16,19 +16,15 @@ class DeliveryRoute:
     def add_start_location(self, name, departure_time: str):
         if self.locations:
             raise ValueError("Start location already set")
-        # if not isinstance(departure_time, str):
-        #     raise TypeError("departure_time must be a str object")
         self.start_time = departure_time
         self.locations.append({"name": name, "departure_time": departure_time})
         self.start_location = name
 
     def add_location(self, name, expected_arrival_time: str):
-        if not self.locations:  raise ValueError("Start location must be set first")
-        # if not isinstance(expected_arrival_time, str):
-        #     raise TypeError("expected_arrival_time must be str object")
+        if not self.locations:
+            raise ValueError("Start location must be set first")
         self.locations.append({"name": name, "expected_arrival_time": expected_arrival_time})
         self.end_location = name
-
 
     def display_route(self):
         route_info = []
@@ -39,4 +35,3 @@ class DeliveryRoute:
                 route_info.append(
                     f"Location {i}: {location['name']}, Expected Arrival Time: {location['expected_arrival_time']}")
         return "\n".join(route_info)
-

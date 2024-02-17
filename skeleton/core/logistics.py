@@ -16,7 +16,6 @@ class Logistics:
         self.trucks = Trucks()
         self.distances = DISTANCES
 
-
     def add_package(self, package: Package):
         if any(p for p in self.packages if p.id == package.package_id):
             return False
@@ -79,7 +78,7 @@ class Logistics:
 
         if not self.is_truck_available(truck, route.start_time):
             return "Truck is not available for the requested start time."
-        truck.status = VehicleStatus.UNAVAILABLE
+        truck.status = VehicleStatus.ASSIGNED
 
         # Calculate end time of the new route
         end_time_of_new_route = self.calculate_route_end_time(route.start_time, start_location, end_location)
@@ -111,8 +110,8 @@ class Logistics:
         for package in self.packages:
             if package.package_id == package_id:
                 return package
-
         raise ValueError(f"No package with id: {package_id} exists")
+
     def find_truck_by_id(self, truck_id):
         return self.trucks.find_truck_by_id(truck_id)
 

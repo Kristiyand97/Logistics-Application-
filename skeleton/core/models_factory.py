@@ -13,11 +13,6 @@ class ModelsFactory:
         self._route_id += 1
         return DeliveryRoute(route_id)
 
-    # def create_package(self, start_location: str, end_location: str, weight: str, contact_info):
-    #     weight = float(weight)
-    #
-    #     return Package(start_location, end_location, weight, contact_info)
-
     def generate_truck(self, name: str, capacity: int, max_range: int):
         truck_id = self._truck_id
         self._truck_id += 1

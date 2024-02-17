@@ -2,6 +2,9 @@ from skeleton.models.truck import Truck
 
 
 class Trucks:
+    """
+    Once the instance is created, there is no need of a second one.
+    """
     _instance = None
 
     def __new__(cls):
@@ -23,7 +26,7 @@ class Trucks:
         """
         truck_id = 1001
         for _ in range(10):
-            self.trucks.append(Truck(truck_id, "Scania", 4200, 8000))
+            self.trucks.append(Truck(truck_id, "Scania", 42000, 8000))
             truck_id += 1
         for _ in range(15):
             self.trucks.append(Truck(truck_id, "Man", 37000, 10000))
