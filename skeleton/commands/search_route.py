@@ -1,6 +1,6 @@
-from commands.base_command import BaseCommand
-from core.logistics import Logistics
-from core.models_factory import ModelsFactory
+from skeleton.commands.base_command import BaseCommand
+from skeleton.core.logistics import Logistics
+from skeleton.core.models_factory import ModelsFactory
 
 
 class SearchRouteCommand(BaseCommand):

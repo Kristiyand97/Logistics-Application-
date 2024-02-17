@@ -1,10 +1,9 @@
-from skeleton.models.constants.constant import PackageStatus
-from skeleton.models.helper_functions import calculate_time_between_cities
+from skeleton.models.constants.package_status import PackageStatus
 
 
 class Package:
 
-    _id = 1
+    id = 1
 
     def __init__(self, start_location: str,
                  end_location: str, weight: float, contact_info):
@@ -14,25 +13,20 @@ class Package:
         self.contact_info = contact_info
         self.status = PackageStatus.PENDING
         self.assigned_route = None
-        self.package_id = Package._id
-        Package._id += 1
+        self.package_id = Package.id
+        Package.id += 1
+        # print(f"Creating package with ID: {Package.id}")
+    def assign_route(self, route):
+        self.assigned_route = route
+        return "A delivery route was assigned to the package"
 
-    def display_package(self):
-        package_info = (
-            f"Package ID: {self.package_id}\n"
-            f"Start Location: {self.start_location}\n"
-            f"End Location: {self.end_location}\n"
-            f"Weight: {self.weight} kg\n"
-            f"Contact Info: {self.contact_info}\n"
-            f"Status: {self.status}\n"
-        )
+    def __str__(self):
+        return f"{self.package_id} | {self.weight} | {self.contact_info}"
 
-        if self.assigned_route:
-            package_info += f"Assigned to route ID: {self.assigned_route.route_id}\n"
-            estimated_arrival_time = calculate_time_between_cities()
-            package_info += f"Estimated Arrival Time: {estimated_arrival_time.strftime('%b %d %H:%M')}\n"
-        else:
-            package_info += "Not yet assigned to a route\n"
 
-        return package_info
+
+
+
+
+
 

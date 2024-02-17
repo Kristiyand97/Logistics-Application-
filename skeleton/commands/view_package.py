@@ -1,6 +1,6 @@
-from commands.base_command import BaseCommand
-from core.logistics import Logistics
-from core.models_factory import ModelsFactory
+from skeleton.commands.base_command import BaseCommand
+from skeleton.core.logistics import Logistics
+from skeleton.core.models_factory import ModelsFactory
 
 
 class ViewPackageCommand(BaseCommand):
@@ -15,19 +15,16 @@ class ViewPackageCommand(BaseCommand):
         return self._models_factory
 
     def execute(self):
-        package_id = self.params[0]
+        package_id = int(self.params[0])
+        package = self.logistics.get_package_by_id(package_id)
 
-
-
-
-
-
-        start_location = self.params[0]
-        end_location = self.params[1]
-        weight = self.params[2]
-        contact_info = self.params[3]
-        new_package = self.models_factory.create_package(start_location,end_location,weight,contact_info)
-
-        self.logistics.add_package(new_package)
-
-        return f'Package #{package_id} created'
+        if package:
+            delivery_time_msg = "This package has not yet been assigned to a route" if package.assigned_route is None \
+                else f"Delivery time: {self.logistics.calculate_arrival_time(package_id)}"
+            return (f"Package ID: {package.package_id}\n"
+                    f"End Location: {package.end_location}\n"
+                    f"Weight: {package.weight} kg\n"
+                    f"Status: {package.status}\n"
+                    f"{delivery_time_msg}")
+        else:
+            return "Package not found."

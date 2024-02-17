@@ -1,9 +1,10 @@
 from skeleton.commands.base_command import BaseCommand
 from skeleton.core.logistics import Logistics
 from skeleton.core.models_factory import ModelsFactory
+from skeleton.models.constants.package_status import PackageStatus
 
 
-class AssignPackage(BaseCommand):
+class ViewUnassignedPackagesCommand(BaseCommand):
     def __init__(self, params: list[str],
                  logistics: Logistics,
                  models_factory: ModelsFactory):
@@ -15,7 +16,10 @@ class AssignPackage(BaseCommand):
         return self._models_factory
 
     def execute(self):
-        # TODO Add validation for param
-        package_id = int(self.params[0])
+        unassigned_packages = "Unassigned Packages ID: "
+        for package in self.logistics.packages:
+            if package.assigned_route is None:
+                unassigned_packages += f"\n{package.package_id}"
+        return unassigned_packages
 
-        return self.logistics.assign_package_to_optimal_route(package_id)
+

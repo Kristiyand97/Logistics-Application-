@@ -1,4 +1,4 @@
-from core.command_factory import CommandFactory
+from skeleton.core.command_factory import CommandFactory
 
 
 class Engine:

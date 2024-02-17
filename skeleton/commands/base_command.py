@@ -1,4 +1,4 @@
-from core.logistics import Logistics
+from skeleton.core.logistics import Logistics
 
 
 class BaseCommand():
@@ -11,8 +11,8 @@ class BaseCommand():
         return tuple(self._params)
 
     @property
-    def app_data(self):
-        return self._app_data
+    def logistics(self):
+        return self._logistics
 
     def execute(self):
         # override in derived classes
