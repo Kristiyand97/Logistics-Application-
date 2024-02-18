@@ -1,31 +1,45 @@
 import unittest
 
+from skeleton.models.constants.vehicle_status import VehicleStatus
 from skeleton.models.truck import Truck
 
 
 class Truck_should(unittest.TestCase):
-    def test_init_setProperties(self):
-        # Arrange & Act
-        truck = Truck(1001, "Scania", 42000, 8000)
+    def test_valid_initialization(self):
+        truck = Truck(1001, "Test", 30000, 5000)
+        self.assertEqual(truck.name, "Test")
+        self.assertEqual(truck.capacity, 30000)
+        self.assertEqual(truck.max_range, 5000)
+        self.assertEqual(truck.truck_id, 1001)
+        self.assertEqual(truck.status, VehicleStatus.ASSIGNED)
+        self.assertEqual(truck.assigned_routes, tuple())  # Assuming routes start empty
 
-        self.assertEquals(truck.truck_id, 1001)
-        self.assertEquals(truck.name, "Scania")
-        self.assertEquals(truck.capacity, 42000)
-        self.assertEquals(truck.max_range, 8000)
+    def test_name_too_short(self):
+        with self.assertRaises(ValueError) as cm:
+            Truck(1002, "AB", 40000, 6000)
+        self.assertEqual(str(cm.exception), Truck.NAME_ERR)
 
-    def test_initialization_with_negatives(self):
-        # Arrange & Act
-        truck = Truck(1002, "Test", -100, -200)
+    def test_name_too_long(self):
+        with self.assertRaises(ValueError) as cm:
+            Truck(1003, "ThisNameIsTooLong", 40000, 6000)
+        self.assertEqual(str(cm.exception), Truck.NAME_ERR)
 
-        # Assert
-        self.assertGreaterEqual(truck.capacity, 0)
-        self.assertGreaterEqual(truck.max_range, 0)
+    def test_capacity_too_low(self):
+        with self.assertRaises(ValueError) as cm:
+            Truck(1004, "Truck", 5000, 8000)
+        self.assertEqual(str(cm.exception), Truck.CAPACITY_ERR)
 
-    def test_initialization_with_above_max_capacity_and_range(self):
-        # Arrange & Act
-        truck = Truck(1001, 'Scania', 42000, 8000)
-        large_truck = Truck(1003, "Test", 10000000, 20000000)
+    def test_capacity_too_high(self):
+        with self.assertRaises(ValueError) as cm:
+            Truck(1005, "Truck", 70000, 8000)
+        self.assertEqual(str(cm.exception), Truck.CAPACITY_ERR)
 
-        # Assert
-        self.assertLessEqual(large_truck.capacity, truck.capacity)
-        self.assertLessEqual(large_truck.max_range, truck.max_range)
+    def test_range_too_low(self):
+        with self.assertRaises(ValueError) as cm:
+            Truck(1006, "Truck", 40000, 500)
+        self.assertEqual(str(cm.exception), Truck.RANGE_ERR)
+
+    def test_range_too_high(self):
+        with self.assertRaises(ValueError) as cm:
+            Truck(1007, "Truck", 40000, 15000)
+        self.assertEqual(str(cm.exception), Truck.RANGE_ERR)

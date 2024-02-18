@@ -4,13 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d1facf79-6e93-47e4-881a-5e5e65f3c816" name="Changes" comment="New commands added.&#10;An issue with the command viewpackage where after the first created packaged, the second package was not able to be register due to a small bug in get_package_by_id due to indentation, was resolved.(It took me 2 hours to find it)">
+    <list default="true" id="d1facf79-6e93-47e4-881a-5e5e65f3c816" name="Changes" comment="Truck and AllTrucks classes now have unit tests.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/skeleton/models/package.py" beforeDir="false" afterPath="$PROJECT_DIR$/skeleton/models/package.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -33,6 +41,7 @@
     "Python.main.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/krist/Desktop/New folder/ООП",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -112,7 +121,8 @@
       <updated>1708194187094</updated>
       <workItem from="1708194189750" duration="31000" />
       <workItem from="1708194651021" duration="277000" />
-      <workItem from="1708194957603" duration="2541000" />
+      <workItem from="1708194957603" duration="15254000" />
+      <workItem from="1708219609830" duration="1327000" />
     </task>
     <task id="LOCAL-00001" summary="New commands added.&#10;An issue with the command viewpackage where after the first created packaged, the second package was not able to be register due to a small bug in get_package_by_id due to indentation, was resolved.(It took me 2 hours to find it)">
       <option name="closed" value="true" />
@@ -130,7 +140,23 @@
       <option name="project" value="LOCAL" />
       <updated>1708196201830</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Updates:&#10;1. Class Package Encapsulation.&#10;2. Unused methods/attributes were deleted.&#10;3. Class VehicleStatus's attributes changed from UNAVAILABLE/AVAILABLE to UNSIGNED/ASSIGNED.">
+      <option name="closed" value="true" />
+      <created>1708205869069</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1708205869069</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Truck and AllTrucks classes now have unit tests.">
+      <option name="closed" value="true" />
+      <created>1708218965064</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1708218965064</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -138,10 +164,12 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="New commands added.&#10;An issue with the command viewpackage where after the first created packaged, the second package was not able to be register due to a small bug in get_package_by_id due to indentation, was resolved.(It took me 2 hours to find it)" />
-    <option name="LAST_COMMIT_MESSAGE" value="New commands added.&#10;An issue with the command viewpackage where after the first created packaged, the second package was not able to be register due to a small bug in get_package_by_id due to indentation, was resolved.(It took me 2 hours to find it)" />
+    <MESSAGE value="Updates:&#10;1. Class Package Encapsulation.&#10;2. Unused methods/attributes were deleted.&#10;3. Class VehicleStatus's attributes changed from UNAVAILABLE/AVAILABLE to UNSIGNED/ASSIGNED." />
+    <MESSAGE value="Truck and AllTrucks classes now have unit tests." />
+    <option name="LAST_COMMIT_MESSAGE" value="Truck and AllTrucks classes now have unit tests." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/OOP_Project___Logistics_App$main.coverage" NAME="main Coverage Results" MODIFIED="1708194914439" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OOP Project - Logistics App/skeleton" />
-    <SUITE FILE_PATH="coverage/OOP_Project___Logistics_App$main__1_.coverage" NAME="main (1) Coverage Results" MODIFIED="1708196318847" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/skeleton" />
+    <SUITE FILE_PATH="coverage/OOP_Project___Logistics_App$main__1_.coverage" NAME="main (1) Coverage Results" MODIFIED="1708220690278" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/skeleton" />
   </component>
 </project>
