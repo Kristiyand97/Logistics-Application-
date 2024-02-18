@@ -18,10 +18,10 @@ class Package:
 
     def __init__(self, start_location: str,
                  end_location: str, weight: float, contact_info):
-        self._start_location = start_location
-        self._end_location = end_location
-        self._weight = weight
-        self._contact_info = contact_info
+        self.start_location = start_location
+        self.end_location = end_location
+        self.weight = weight
+        self.contact_info = contact_info
         self.status = PackageStatus.PENDING
         self.assigned_route = None
         self.package_id = Package.id
@@ -34,7 +34,7 @@ class Package:
 
     @start_location.setter
     def start_location(self, value):
-        if value != Package.START_LOCATION:
+        if len(value) != Package.START_LOCATION:
             raise ValueError(Package.LOCATIONS_ERR)
         self._start_location = value
 
@@ -44,7 +44,7 @@ class Package:
 
     @end_location.setter
     def end_location(self, value):
-        if value != Package.END_LOCATION:
+        if len(value) != Package.END_LOCATION:
             raise ValueError(Package.LOCATIONS_ERR)
         self._end_location = value
 

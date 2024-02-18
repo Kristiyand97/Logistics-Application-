@@ -4,7 +4,7 @@ from skeleton.models.package import Package
 
 v_start_loc = "SYD"
 v_end_loc = "BRI"
-v_weight = 200
+v_weight = 30000
 v_contact_info = "0898967597"
 
 
@@ -28,23 +28,19 @@ class Package_Should(unittest.TestCase):
 
     def test_package_raiseError_invalid_weight(self):
         with self.assertRaises(ValueError):
-            Package(v_start_loc, v_end_loc, 0, v_contact_info)
+            Package(v_start_loc, v_end_loc, 50000, v_contact_info)
 
     def test_package_raiseError_invalid_contact_info(self):
         with self.assertRaises(ValueError):
             Package(v_start_loc, v_end_loc, v_weight, "")
 
-    def test_displayPackage_no_assigned_route(self):
+
+    def test_package_valid_return(self):
         package1 = Package(v_start_loc, v_end_loc, v_weight, v_contact_info)
-        expected = (
-            f"Package ID: {package1.package_id}\n"
-            f"Start Location: {v_start_loc}\n"
-            f"End Location: {v_end_loc}\n"
-            f"Weight: {v_weight} kg\n"
-            f"Contact Info: {v_contact_info}\n"
-            f"Status: {package1.status}\n"
-        )
 
-        actual = package1.display_package()
+        expected = f"{package1.package_id} | {v_weight} | {v_contact_info}"
 
-        self.assertEqual(expected, actual)
+        real = f"{package1}"
+        self.assertEqual(expected,real)
+
+
