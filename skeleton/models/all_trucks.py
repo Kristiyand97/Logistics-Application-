@@ -35,10 +35,7 @@ class Trucks:
             self.trucks.append(Truck(truck_id, "Actros", 26000, 13000))
             truck_id += 1
 
-    def find_suitable_truck(self, max_range: int) -> Truck:
-        for truck in self.trucks:
-            if truck.max_range >= max_range:
-                return truck
+
 
     def find_truck_by_id(self, truck_id: int):
         # Search in unused trucks

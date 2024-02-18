@@ -1,7 +1,3 @@
-from datetime import datetime
-
-from skeleton.models.truck import Truck
-
 
 class DeliveryRoute:
     def __init__(self, route_id):
@@ -35,3 +31,5 @@ class DeliveryRoute:
                 route_info.append(
                     f"Location {i}: {location['name']}, Expected Arrival Time: {location['expected_arrival_time']}")
         return "\n".join(route_info)
+
+
