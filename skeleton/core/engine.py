@@ -8,12 +8,22 @@ class Engine:
     def start(self):
         output: list[str] = []
         while True:
-            input_line = input()
-            if input_line.lower() == 'end':
+            try:
+                input_line = input()
+                if input_line.lower() == 'end':
+                    break
+
+                try:
+                    command = self._command_factory.create(input_line)
+                    output.append(command.execute())
+                except Exception as e:
+                    print(f"Invalid command: {e}. Please try again.")
+
+            except KeyboardInterrupt:
+                print("Program interrupted by user.")
                 break
-
-            command = self._command_factory.create(input_line)
-
-            output.append(command.execute())
+            except Exception as e:
+                print(f"Unexpected error: {e}")
+                break
 
         print('\n'.join(output))

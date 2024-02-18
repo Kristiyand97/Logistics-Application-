@@ -18,7 +18,7 @@ class Truck:
         self.name = name
         self.capacity = capacity
         self.max_range = max_range
-        self.status = VehicleStatus.ASSIGNED
+        self.status = VehicleStatus.UNASSIGNED
         self.truck_id = truck_id
         self._assigned_routes = []
 

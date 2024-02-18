@@ -6,6 +6,7 @@ from skeleton.models.constants.package_status import PackageStatus
 from skeleton.models.constants.vehicle_status import VehicleStatus
 from skeleton.models.package import Package
 from skeleton.models.delivery_route import DeliveryRoute
+from skeleton.models.truck import Truck
 
 
 class Logistics:
