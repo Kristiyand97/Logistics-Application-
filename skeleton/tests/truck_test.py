@@ -12,7 +12,7 @@ class Truck_should(unittest.TestCase):
         self.assertEqual(truck.max_range, 5000)
         self.assertEqual(truck.truck_id, 1001)
         self.assertEqual(truck.status, VehicleStatus.ASSIGNED)
-        self.assertEqual(truck.assigned_routes, tuple())  # Assuming routes start empty
+        self.assertEqual(truck.assigned_routes, [])  # Assuming routes start empty
 
     def test_name_too_short(self):
         with self.assertRaises(ValueError) as cm:

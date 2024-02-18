@@ -11,7 +11,7 @@ class Truck:
     CAPACITY_ERR = f"The range must be between {MIN_CAPACITY} and {MAX_CAPACITY}"
 
     MIN_RANGE = 1000
-    MAX_RANGE = 10000
+    MAX_RANGE = 100000
     RANGE_ERR = f"The range must be between {MIN_RANGE} and {MAX_RANGE}"
 
     def __init__(self, truck_id: int, name: str, capacity: int, max_range: int):
@@ -24,7 +24,7 @@ class Truck:
 
     @property
     def assigned_routes(self):
-        return tuple(self._assigned_routes)
+        return self._assigned_routes
 
 
     @property
