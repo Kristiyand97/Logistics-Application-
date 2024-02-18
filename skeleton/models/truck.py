@@ -6,12 +6,12 @@ class Truck:
     MAX_LEN_NAME = 10
     NAME_ERR = f"The range must be between {MIN_LEN_NAME} and {MAX_LEN_NAME}"
 
-    MIN_CAPACITY = 10000
-    MAX_CAPACITY = 60000
+    MIN_CAPACITY = 26000
+    MAX_CAPACITY = 42000
     CAPACITY_ERR = f"The range must be between {MIN_CAPACITY} and {MAX_CAPACITY}"
 
-    MIN_RANGE = 1000
-    MAX_RANGE = 100000
+    MIN_RANGE = 8000
+    MAX_RANGE = 13000
     RANGE_ERR = f"The range must be between {MIN_RANGE} and {MAX_RANGE}"
 
     def __init__(self, truck_id: int, name: str, capacity: int, max_range: int):

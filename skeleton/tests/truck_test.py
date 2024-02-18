@@ -12,7 +12,7 @@ class Truck_should(unittest.TestCase):
         self.assertEqual(truck.max_range, 5000)
         self.assertEqual(truck.truck_id, 1001)
         self.assertEqual(truck.status, VehicleStatus.ASSIGNED)
-        self.assertEqual(truck.assigned_routes, [])  # Assuming routes start empty
+        self.assertEqual(truck.assigned_routes, [])
 
     def test_name_too_short(self):
         with self.assertRaises(ValueError) as cm:
@@ -26,20 +26,20 @@ class Truck_should(unittest.TestCase):
 
     def test_capacity_too_low(self):
         with self.assertRaises(ValueError) as cm:
-            Truck(1004, "Truck", 5000, 8000)
+            Truck(1004, "Truck", 5000, 25999)
         self.assertEqual(str(cm.exception), Truck.CAPACITY_ERR)
 
     def test_capacity_too_high(self):
         with self.assertRaises(ValueError) as cm:
-            Truck(1005, "Truck", 70000, 8000)
+            Truck(1005, "Truck", 70000, 42001)
         self.assertEqual(str(cm.exception), Truck.CAPACITY_ERR)
 
     def test_range_too_low(self):
         with self.assertRaises(ValueError) as cm:
-            Truck(1006, "Truck", 40000, 500)
+            Truck(1006, "Truck", 40000, 7999)
         self.assertEqual(str(cm.exception), Truck.RANGE_ERR)
 
     def test_range_too_high(self):
         with self.assertRaises(ValueError) as cm:
-            Truck(1007, "Truck", 40000, 15000)
+            Truck(1007, "Truck", 40000, 13001)
         self.assertEqual(str(cm.exception), Truck.RANGE_ERR)
