@@ -1,50 +1,73 @@
-Logistics Application
-Project Description
-This Logistics console application is designed for a large Australian company expanding into the freight industry. The application facilitates the management of package deliveries between major Australian cities, streamlining the process for company employees.
+# Logistics Application
 
-Functional Requirements
-The application supports various operations essential for efficient logistics management:
+## Project Description
+This Logistics console application is tailored for a large Australian company looking to broaden its services in the freight industry. It is designed to assist company employees in managing the delivery of packages across major Australian cities.
 
-Creating a Delivery Package: Record the details of a delivery package, including a unique ID, start and end locations, weight in kilograms, and customer contact information.
+## Functional Requirements
+The application supports a variety of functions crucial to logistics management:
 
-Creating a Delivery Route:
+### Creating a Delivery Package
+Add details of a delivery package, including a unique ID, start and end locations, weight, and customer contact information.
 
-Each route has a unique ID and a list of locations (minimum of two).
-The first location is the starting point with a departure time.
-Subsequent locations have expected arrival times.
-Searching for a Route: Find a delivery route based on the package's start and end locations.
+### Creating a Delivery Route
+- Routes have a unique ID and a list of locations.
+- The first location indicates the starting point with a departure time.
+- Subsequent locations include expected arrival times.
 
-Updating a Delivery Route: Assign a free truck to a delivery route.
+### Searching for a Route
+Locate a delivery route based on the package's origin and destination.
 
-Assigning a Package to a Route: Link a delivery package to a specific route.
+### Updating a Delivery Route
+Assign an available truck to a route.
 
-Viewing Information: Inspect current states of delivery packages, transport vehicles, and delivery routes.
+### Assigning a Package to a Route
+Link a delivery package to a route.
 
-Terminal Commands
-To interact with the application, use the following commands in the terminal:
+### Viewing Information
+Access current information on delivery packages, trucks, and routes.
+## Examples
 
-createroute <StartLocation> <DepartureTime> <EndLocation> <ArrivalTime>
-createpackage <StartLocation> <EndLocation> <Weight> <CustomerContact>
-viewpackage <PackageID>
-viewunassignedpackages
-assignroute <PackageID> <RouteID>
-searchroute <RouteID>
-viewtruck <TruckID>
-assignpackage <PackageID>
-Examples
-createroute SYD 25/05/24 02:35 MEL 25/05/24 02:35
-createpackage SYD MEL 89.0 98435345
-viewpackage 1
-assignroute 1 1001
-searchroute 1
-viewtruck 1001
-assignpackage 1
-...
-Getting Started
-To get started with the application:
+### Creating Routes
+- `createroute SYD 25/05/24 02:35 MEL 25/05/24 04:35`
+- `createroute MEL 25/05/24 05:00 SYD 25/05/24 07:00`
+- `createroute ADL 27/07/24 03:35 PER 26/06/24 06:35`
 
-Clone the repository to your local machine.
-Navigate to the project directory in your terminal.
-Use the provided commands to interact with the application.
-Contributing
-Contributions to this project are welcome. Please adhere to the project's coding standards and submit pull requests for any new features or bug fixes.
+### Creating Packages
+- `createpackage SYD MEL 89.0 98435345`
+- `createpackage MEL SYD 34.9 345635635`
+- `createpackage ADL PER 34.2 36546546`
+
+### Viewing Packages
+- `viewpackage 1`
+- `viewpackage 2`
+- `viewpackage 3`
+
+### Viewing Unassigned Packages
+- `viewunassignedpackages`
+
+### Assigning Routes to Packages
+- `assignroute 1 1001`
+- `assignroute 2 1002`
+- `assignroute 3 1003`
+
+### Searching for Routes
+- `searchroute 1`
+- `searchroute 2`
+- `searchroute 3`
+
+### Viewing Truck Information
+- `viewtruck 1001`
+- `viewtruck 1002`
+- `viewtruck 1003`
+
+### Assigning Packages to Trucks
+- `assignpackage 1`
+- `assignpackage 2`
+- `assignpackage 3`
+
+## Getting Started
+To begin using the application:
+
+1. Clone the repository to your local machine.
+2. Navigate to the project directory in your terminal.
+3. Run the application and use the provided commands to interact with it.
