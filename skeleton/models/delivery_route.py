@@ -5,7 +5,7 @@ from skeleton.models.constants.constants import calculate_time_between_cities
 
 class DeliveryRoute:
     route_id = 1
-
+    #S
     def __init__(self, route: str, start_time: datetime):
         self.route_id = DeliveryRoute.route_id
         DeliveryRoute.route_id += 1

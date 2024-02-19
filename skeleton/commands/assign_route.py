@@ -3,7 +3,7 @@ from skeleton.core.logistics import Logistics
 from skeleton.core.models_factory import ModelsFactory
 
 
-
+#S
 class AssignRouteToTruck(BaseCommand):
     def __init__(self, params: list[str],
                  logistics: Logistics,

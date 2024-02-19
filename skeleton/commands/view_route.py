@@ -2,7 +2,7 @@ from skeleton.commands.base_command import BaseCommand
 from skeleton.core.logistics import Logistics
 from skeleton.core.models_factory import ModelsFactory
 
-
+#S
 class ViewRouteCommand(BaseCommand):
     def __init__(self, params: list[str],
                  logistics: Logistics,
