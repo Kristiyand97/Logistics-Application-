@@ -1,12 +1,11 @@
-from commands.base_command import BaseCommand
-from core.logistics import Logistics
-from core.models_factory import ModelsFactory
+from skeleton.commands.base_command import BaseCommand
+from skeleton.core.logistics import Logistics
+from skeleton.core.models_factory import ModelsFactory
+from datetime import datetime, timedelta
 
 
 class CreateRouteCommand(BaseCommand):
-    def __init__(self, params: list[str],
-                 logistics: Logistics,
-                 models_factory: ModelsFactory):
+    def __init__(self, params: list[str], logistics: Logistics, models_factory: ModelsFactory):
         super().__init__(params, logistics)
         self._models_factory = models_factory
 
@@ -15,18 +14,23 @@ class CreateRouteCommand(BaseCommand):
         return self._models_factory
 
     def execute(self):
-        new_route = self.models_factory.create_route()
+        try:
+            # Split the first parameter into the route locations
+            route_locations = self.params[0].split('>')
 
-        # TODO Add validation for params
-        start_name = self.params[0]
-        start_departure_time = self.params[1]
-        next_name = self.params[2]
-        expected_arrival_time = self.params[3]
+            # Parse the departure time
+            start_departure_time_str = self.params[1] + " " + self.params[2]
+            start_departure_time = datetime.strptime(start_departure_time_str, '%d/%m/%Y %H:%M')
 
-        new_route.add_start_location(start_name,start_departure_time)
-        new_route.add_location(next_name,expected_arrival_time)
+            # Join the locations into a route string
+            route_str = '>'.join(route_locations)
 
-        self.logistics.add_route(new_route)
+            # Create new route using the models factory
+            new_route = self.logistics.create_route(route_str, start_departure_time)
 
-        return f'Route #{new_route.route_id} created'
+            self.logistics.add_route(new_route)
+            return f'Route #{new_route.route_id} created'
+
+        except ValueError as e:
+            return f"Error: {str(e)}"
 
