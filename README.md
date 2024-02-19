@@ -1,41 +1,50 @@
-# Logistics Console Application
+Logistics Application
+Project Description
+This Logistics console application is designed for a large Australian company expanding into the freight industry. The application facilitates the management of package deliveries between major Australian cities, streamlining the process for company employees.
 
-## Project Description
+Functional Requirements
+The application supports various operations essential for efficient logistics management:
 
-This Logistics console application is designed for a large Australian company venturing into the freight industry. 
-It serves as a management tool for employees to handle package deliveries between major Australian cities efficiently. 
-The application facilitates recording package details, route creation and searching, and inspecting the state of deliveries and transport vehicles.
+Creating a Delivery Package: Record the details of a delivery package, including a unique ID, start and end locations, weight in kilograms, and customer contact information.
 
-## Functional Requirements
+Creating a Delivery Route:
 
-### Features
+Each route has a unique ID and a list of locations (minimum of two).
+The first location is the starting point with a departure time.
+Subsequent locations have expected arrival times.
+Searching for a Route: Find a delivery route based on the package's start and end locations.
 
-The application supports the following features:
+Updating a Delivery Route: Assign a free truck to a delivery route.
 
-- **Package Management**
-  - Create a delivery package with a unique ID, start and end locations, weight (in kg), and customer contact information.
+Assigning a Package to a Route: Link a delivery package to a specific route.
 
-- **Route Management**
-  - Create delivery routes with unique IDs and a list of locations.
-    - Start location includes a departure time.
-    - Subsequent locations include expected arrival times.
-  - Search for a route based on a package's start and end location.
-  - Update a delivery route by assigning a free truck.
-  - Assign a delivery package to a route.
+Viewing Information: Inspect current states of delivery packages, transport vehicles, and delivery routes.
 
-- **Information Display**
-  - View information about routes, packages, and trucks.
+Terminal Commands
+To interact with the application, use the following commands in the terminal:
 
-- **Data Persistence**
-  - Save the application state to the file system.
+createroute <StartLocation> <DepartureTime> <EndLocation> <ArrivalTime>
+createpackage <StartLocation> <EndLocation> <Weight> <CustomerContact>
+viewpackage <PackageID>
+viewunassignedpackages
+assignroute <PackageID> <RouteID>
+searchroute <RouteID>
+viewtruck <TruckID>
+assignpackage <PackageID>
+Examples
+createroute SYD 25/05/24 02:35 MEL 25/05/24 02:35
+createpackage SYD MEL 89.0 98435345
+viewpackage 1
+assignroute 1 1001
+searchroute 1
+viewtruck 1001
+assignpackage 1
+...
+Getting Started
+To get started with the application:
 
-## Getting Started
-
-1. Clone the repository to your local machine.
-2. Navigate to the project directory.
-3. Run the application using the command line or through an IDE like PyCharm.
-
-## Usage
-
-- To start the application, execute the `main` method in the `LogisticsApp` class.
-- Follow the on-screen prompts to interact with the application.
+Clone the repository to your local machine.
+Navigate to the project directory in your terminal.
+Use the provided commands to interact with the application.
+Contributing
+Contributions to this project are welcome. Please adhere to the project's coding standards and submit pull requests for any new features or bug fixes.
