@@ -28,9 +28,9 @@ Access current information on delivery packages, trucks, and routes.
 ## Examples
 
 ### Creating Routes
-- `createroute SYD 25/05/24 02:35 MEL 25/05/24 04:35`
-- `createroute MEL 25/05/24 05:00 SYD 25/05/24 07:00`
-- `createroute ADL 27/07/24 03:35 PER 26/06/24 06:35`
+- `createroute SYD>MEL>ADL 08/06/2024 15:35`
+- `createroute MEL>ADL>SYD 08/09/2024 18:35`
+
 
 ### Creating Packages
 - `createpackage SYD MEL 89.0 98435345`
