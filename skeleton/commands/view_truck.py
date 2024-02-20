@@ -1,6 +1,7 @@
 from skeleton.commands.base_command import BaseCommand
 from skeleton.core.logistics import Logistics
 from skeleton.core.models_factory import ModelsFactory
+from skeleton.models.constants.vehicle_status import VehicleStatus
 
 
 class ViewTruckCommand(BaseCommand):
@@ -24,7 +25,7 @@ class ViewTruckCommand(BaseCommand):
                 f"Name: {truck.name}",
                 f"Capacity: {truck.capacity}",
                 f"Max Range: {truck.max_range}",
-                f"Status: {truck.status}"
+                f"Status: {truck.status == "Assigned"}"
             ]
 
             if truck.assigned_routes:

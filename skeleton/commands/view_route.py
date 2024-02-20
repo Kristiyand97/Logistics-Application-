@@ -34,7 +34,11 @@ class ViewRouteCommand(BaseCommand):
 
             if route.in_progress:
                 estimated_travel_time = self.logistics.estimate_travel_time(route)
-                route_info.append(f"Estimated Travel Time: {estimated_travel_time}")
+                # Convert timedelta to hours and minutes
+                hours, remainder = divmod(estimated_travel_time.total_seconds(), 3600)
+                minutes = remainder // 60
+                travel_time_str = f"{int(hours)}h {int(minutes)}m"
+                route_info.append(f"Estimated Travel Time: {travel_time_str}")
 
             return "\n".join(route_info)
         else:
